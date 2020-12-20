@@ -3,9 +3,10 @@ import { useAuth } from "../../contexts/AuthContext"
 import { useHistory, BrowserRouter } from "react-router-dom"
 import Navigation from "./Navigation"
 import "./dashboard.css"
+import { Button } from 'react-bootstrap'
 
 export default function Dashboard() {
-  {/*
+  
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
   const history = useHistory()
@@ -20,7 +21,7 @@ export default function Dashboard() {
       setError("Failed to log out")
     }
   }
-  */}
+  
 
   return (
     <html>
@@ -30,13 +31,13 @@ export default function Dashboard() {
         <Navigation />  
      
         
-        {/*
+        
         <div className="w-100 text-center mt-2">
           <Button variant="link" onClick={handleLogout}>
             Log Out
           </Button>
         </div>
-        */}
+        
       </div>    
     </body>
     </html>

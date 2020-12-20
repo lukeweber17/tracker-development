@@ -26,6 +26,14 @@ class BootstrapNavbar extends React.Component {
                                     <Nav.Link href="/boards">Boards</Nav.Link>
                                 </Nav>
                             </Switch>
+                            <div class="cur-user">
+                                <strong>Email:</strong> <i>luke.weber@valpo.edu</i>
+                            </div>
+                            
+                            <Button variant="link">
+                                Log Out
+                            </Button>
+                            
                         </Navbar.Collapse>
                     </Navbar>
                     <br />
