@@ -1,0 +1,27 @@
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* use viewport-relative units to cover page fully */
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* include border and padding in element width and height */
+* {
+  box-sizing: border-box;
+}
+
+/* full-sized  container that fills up the page */
+.full-page {
+  height: 100%;
+  width: 100%;
+
+  /* example padding, font-size, background, etc */
+  padding: 15px;
+  font-size: 20px;
+  background-color: #D3E3FC;
+}
