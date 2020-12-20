@@ -9,8 +9,11 @@ import PrivateRoute from "./PrivateRoute"
 import Projects from "./projects/Projects"
 import Issues from "./issues/Issues"
 import Boards from "./boards/Boards"
+import Firebase from 'firebase'
+
 
 function App() {
+
   return (
     
 
@@ -24,9 +27,9 @@ function App() {
           <AuthProvider>
             <Switch>
               <PrivateRoute exact path="/" component={Dashboard} />
-              <Route path="/projects" component={Projects} />
-              <Route path="/issues" component={Issues} />
-              <Route path="/boards" component={Boards} />
+              <PrivateRoute path="/projects" component={Projects} />
+              <PrivateRoute path="/issues" component={Issues} />
+              <PrivateRoute path="/boards" component={Boards} />
               <div className="w-100" style={{ maxWidth: "400px" }}>
                 <Route path="/signup" component={Signup} />
                 <Route path="/login" component={Login} />                            
