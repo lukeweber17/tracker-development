@@ -1,0 +1,5 @@
+.table {
+    overflow-y: scroll;
+    display: block;
+    font-size: 16px;
+}

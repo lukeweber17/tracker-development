@@ -1,0 +1,6 @@
+.card {
+    font-size: 16px;
+    overflow-y: scroll;
+    display: block;
+    height: 450px;
+}
