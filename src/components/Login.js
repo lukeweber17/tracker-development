@@ -47,7 +47,7 @@ export default function Login() {
               </Form.Group>
               <Button disabled={loading} className="w-100" type="submit">
                 Log In
-            </Button>
+              </Button>
             </Form>
             <div className="w-100 text-center mt-3">
               <Link to="/forgot-password">Forgot Password?</Link>
