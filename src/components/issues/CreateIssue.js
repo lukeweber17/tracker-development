@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { Button, Modal, Form, ButtonGroup, Dropdown, DropdownButton } from 'react-bootstrap'
+import { ToggleButton, Button, Modal, Form, ButtonGroup } from 'react-bootstrap'
 import "./createissue.css"
 import { db } from '../../firebase';
 
@@ -12,15 +12,29 @@ export default function CreateIssue() {
     const descriptionRef = useRef()
     const projectRef = useRef()
 
+    const [checked, setChecked] = React.useState(false);
+    const [radioValue, setRadioValue] = React.useState("fire");
+ 
+    const radios = [
+        { name: "Fire", value: "fire" },
+        { name: "Hot", value: "hot" },
+        { name: "Warm", value: "warm" }
+    ];
+
     const [show, setShow] = useState(false);
+    const [prior, setPrior] = useState();
 
     function handleSubmit() {
         db.ref('/issues').push({
             summary: summaryRef.current.value,
-            priority: priorityRef.current.value,
+            priority: radioValue,
             description: descriptionRef.current.value,
             project: projectRef.current.value
         });
+    }
+
+    function handleChange(e) {
+        setPrior(e.target.value)
     }
 
     return (
@@ -36,10 +50,19 @@ export default function CreateIssue() {
                     </Form.Group>
                     <Form.Label>Priority</Form.Label>
                     <br />
-                    <ButtonGroup className="mb-2">
-                        <Button ref={priorityRef} value={"fire"} style={{ backgroundColor: "#eb330e", margin: "5%", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)" }}>Fire</Button>
-                        <Button ref={priorityRef} value={"hot"} style={{ backgroundColor: "#e05702", margin: "5%", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)" }}>Hot</Button>
-                        <Button ref={priorityRef} value={"warm"} style={{ backgroundColor: "#c98b18", margin: "5%", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)" }}>Warm</Button>
+                    <ButtonGroup toggle className="mb-2">
+                        {radios.map((radio, index) => (
+                            <ToggleButton
+                                key={index}
+                                type="radio"
+                                name="radio"
+                                value={radio.value}
+                                checked={radioValue === radio.value}
+                                onChange={e => setRadioValue(e.currentTarget.value)}
+                            >
+                                {radio.name}
+                            </ToggleButton>
+                        ))}
                     </ButtonGroup>
                     <Form.Group controlId="string">
                         <Form.Label>Description</Form.Label>

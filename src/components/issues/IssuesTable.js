@@ -1,11 +1,9 @@
-import React, { useState, useRef } from 'react'
+import React from 'react'
+import { Card, Col, Row } from "react-bootstrap"
 import "./issuestable.css"
 import { db } from '../../firebase'
-import overlayFactory from 'react-bootstrap-table2-overlay'
-import BootstrapTable from 'react-bootstrap-table-next'
+import BootstrapTable, { TableHeaderColumn } from 'react-bootstrap-table-next'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { withRouter } from 'react-router-dom'
-
 
 export default class IssuesTable extends React.Component {
     constructor(props) {
@@ -13,6 +11,10 @@ export default class IssuesTable extends React.Component {
 
         this.state = {
             issueslist: [],
+            currSummary: "",
+            currPriority: "",
+            currDescription: "",
+            currProject: ""
         };
     }
 
@@ -20,12 +22,11 @@ export default class IssuesTable extends React.Component {
         this.getUserData()
     }
 
-
     getUserData = () => {
         db.ref("issues").on("value", snapshot => {
             let issueslist = [];
             snapshot.forEach(snap => {
-                // snap.val() is the dictionary with all your keys/values from the 'students-list' path
+                // snap.val() is the dictionary with all your keys/values from the 'issueslist' path
                 issueslist.push(snap.val());
             });
             this.setState({ issueslist: issueslist });
@@ -47,18 +48,71 @@ export default class IssuesTable extends React.Component {
             text: 'Project'
         }];
 
+        const rowStyle = (row, rowIndex) => {
+            return {
+                backgroundColor: 'white',
+                fontSize: '14px'
+            };
+        };
+
+        const rowEvents = {
+            onClick: (e, row) => {
+                this.setState({ currSummary: row.summary });
+                this.setState({ currPriority: row.priority });
+                this.setState({ currDescription: row.description });
+                this.setState({ currProject: row.project });
+            }
+        };
+
         return (
-            <div>
-                <BootstrapTable 
-                    
-                    rowStyle={{ 
-                        backgroundColor: 'white',
-                    }} 
-                    keyField='id' 
-                    data={this.state.issueslist} 
-                    columns={columns} 
-                />
-            </div >
+            <Row>
+                <Col xs={6}>
+                    <BootstrapTable
+                        keyField='id'
+                        data={this.state.issueslist}
+                        columns={columns}
+                        rowStyle={rowStyle}
+                        rowEvents={rowEvents}
+                        
+                    // bordered
+                    // striped
+                    />
+                </Col>
+                <br />
+                <Col xs={6}>
+                    <Card>
+                        <Card.Header>Selected Issue</Card.Header>
+                        <Card.Body>
+                            <Card.Title>Description</Card.Title>
+                            <Card.Text>
+                                {this.state.currDescription}
+                            </Card.Text>
+                            <br/>
+                            <Row>
+                                <Col xs={6}>
+                                    <Card.Title>Project</Card.Title>
+                                    <Card.Text>
+                                        {this.state.currProject}
+                                    </Card.Text>
+                                </Col>
+                                <Col xs={6}>
+                                    <Card.Title>Priority</Card.Title>
+                                    <Card.Text>
+                                        {this.state.currPriority}
+                                    </Card.Text>
+                                </Col>
+                            </Row>
+                            <br/>
+                            <Card.Title>Summary</Card.Title>
+                            <Card.Text>
+                                {this.state.currSummary}
+                            </Card.Text>
+
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+
         );
     }
 }
