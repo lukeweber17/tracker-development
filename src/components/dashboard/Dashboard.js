@@ -1,9 +1,6 @@
-import React, { useState } from "react"
-import { useAuth } from "../../contexts/AuthContext"
-import { useHistory, BrowserRouter } from "react-router-dom"
+import React from "react"
 import Navigation from "./Navigation"
-import "./dashboard.css"
-import { Button } from 'react-bootstrap'
+import "../../styles/dashboard/dashboard.css"
 import Sidebar from "./Sidebar"
 
 export default function Dashboard() {
@@ -11,11 +8,9 @@ export default function Dashboard() {
   return (
     <html>
     <body>
-      <div class="full-page">
-      
+      <div class="full-page">  
         <Navigation />  
         <Sidebar />
-        
       </div>    
     </body>
     </html>

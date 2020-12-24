@@ -1,5 +1,5 @@
 import React from 'react'
-import '../dashboard/dashboard.css'
+import '../../styles/dashboard/dashboard.css'
 import Navigation from '../dashboard/Navigation'
 
 function Boards() {

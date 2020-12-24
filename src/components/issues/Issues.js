@@ -1,10 +1,10 @@
 import React from 'react'
-import '../dashboard/dashboard.css'
+import '../../styles/dashboard/dashboard.css'
+import "../../styles/issues/issues.css"
 import Navigation from '../dashboard/Navigation'
 import IssueSidebar from './IssueSidebar'
 import IssuesTable from './IssuesTable'
 import { Container, Row, Col } from 'react-bootstrap'
-import "./issues.css"
 
 export default function Issues() {
     return (

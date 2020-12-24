@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { ToggleButton, Button, Modal, Form, ButtonGroup } from 'react-bootstrap'
-import "./createissue.css"
+import "../../styles/issues/createissue.css"
 import { db } from '../../firebase';
 
 

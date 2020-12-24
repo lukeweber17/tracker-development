@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import CreateIssue from "./CreateIssue"
-import "./issuesidebar.css"
+import "../../styles/issues/issuesidebar.css"
 import { Link } from "react-router-dom"
 import { Modal, Button } from "react-bootstrap"
 

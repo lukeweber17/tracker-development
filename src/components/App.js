@@ -1,28 +1,22 @@
 import React from "react"
-import Signup from "./Signup"
+import Signup from "./authentication/Signup"
 import { Container } from "react-bootstrap"
 import { AuthProvider } from "../contexts/AuthContext"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Dashboard from "./dashboard/Dashboard"
-import Login from "./Login"
-import PrivateRoute from "./PrivateRoute"
+import Login from "./authentication/Login"
+import PrivateRoute from "./authentication/PrivateRoute"
 import Projects from "./projects/Projects"
 import Issues from "./issues/Issues"
 import Boards from "./boards/Boards"
-import Firebase from 'firebase'
-
 
 function App() {
 
   return (
-    
-
     <Container
       className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}
-    >
-      
-      
+    > 
         <Router>
           <AuthProvider>
             <Switch>

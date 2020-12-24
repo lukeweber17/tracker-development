@@ -1,14 +1,9 @@
 import React, { useState } from "react"
 import { useAuth } from "../../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
-import {
-    BrowserRouter,
-    Switch,
-    Route,
-    useParams,
-} from "react-router-dom";
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
-import "./navigation.css"
+import { BrowserRouter, Switch } from "react-router-dom";
+import { Navbar, Nav, Button } from 'react-bootstrap'
+import "../../styles/dashboard/navigation.css"
 
 export default function BootstrapNavbar() {
 

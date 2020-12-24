@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, Col, Row } from "react-bootstrap"
-import "./issuestable.css"
+import "../../styles/issues/issuestable.css"
 import { db } from '../../firebase'
 import BootstrapTable, { TableHeaderColumn } from 'react-bootstrap-table-next'
 import 'bootstrap/dist/css/bootstrap.min.css';
