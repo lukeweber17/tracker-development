@@ -3,7 +3,7 @@ import '../../styles/dashboard/dashboard.css'
 import "../../styles/issues/issues.css"
 import Navigation from '../dashboard/Navigation'
 import IssueSidebar from './IssueSidebar'
-import IssuesTable from './IssuesTable'
+import IssuesContent from './IssuesContent'
 import { Container, Row, Col } from 'react-bootstrap'
 
 export default function Issues() {
@@ -15,10 +15,9 @@ export default function Issues() {
                     <Container fluid className="full-container">
                         <Row>
                             <Col xs={2}><IssueSidebar /></Col>
-                            <Col xs={10}><IssuesTable /></Col>
+                            <Col xs={10}><IssuesContent /></Col>
                         </Row>
                     </Container>
-
                 </div>
             </body>
         </html>

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Card, Col, Row } from "react-bootstrap"
-import "../../styles/issues/issuestable.css"
+import "../../styles/issues/issuescontent.css"
 import { db } from '../../firebase'
-import BootstrapTable, { TableHeaderColumn } from 'react-bootstrap-table-next'
+import BootstrapTable from 'react-bootstrap-table-next'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default class IssuesTable extends React.Component {
+export default class IssuesContent extends React.Component {
     constructor(props) {
         super(props);
 
@@ -17,7 +17,7 @@ export default class IssuesTable extends React.Component {
             currProject: ""
         };
     }
-
+    
     componentDidMount() {
         this.getUserData()
     }
@@ -65,29 +65,29 @@ export default class IssuesTable extends React.Component {
         };
 
         return (
-            <Row>
-                <Col xs={6}>
+            <Row class="wrapper">
+                <Col class="dbtable" xs={6}>
                     <BootstrapTable
                         keyField='id'
                         data={this.state.issueslist}
                         columns={columns}
                         rowStyle={rowStyle}
                         rowEvents={rowEvents}
-                        
+
                     // bordered
                     // striped
                     />
                 </Col>
                 <br />
                 <Col xs={6}>
-                    <Card>
+                    <Card class="currentissue">
                         <Card.Header>Selected Issue</Card.Header>
                         <Card.Body>
                             <Card.Title>Description</Card.Title>
                             <Card.Text>
                                 {this.state.currDescription}
                             </Card.Text>
-                            <br/>
+                            <br />
                             <Row>
                                 <Col xs={6}>
                                     <Card.Title>Project</Card.Title>
@@ -102,7 +102,7 @@ export default class IssuesTable extends React.Component {
                                     </Card.Text>
                                 </Col>
                             </Row>
-                            <br/>
+                            <br />
                             <Card.Title>Summary</Card.Title>
                             <Card.Text>
                                 {this.state.currSummary}
