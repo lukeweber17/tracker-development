@@ -14,3 +14,11 @@
 .card-content {
     font-size: 14px;
 }
+
+.react-bootstrap-table {
+    height: 80vh;
+    overflow-y: scroll;
+}
+.react-bootstrap-table.thead {
+    position: sticky;
+}

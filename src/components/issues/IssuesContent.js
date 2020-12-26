@@ -87,6 +87,7 @@ export default class IssuesContent extends React.Component {
                             columns={columns}
                             rowStyle={rowStyle}
                             rowEvents={rowEvents}
+                            className="react-bootstrap-table"
                         />
                     </Card>
                 </Col>
