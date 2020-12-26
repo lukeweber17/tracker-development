@@ -1,9 +1,9 @@
 import React from 'react'
 import { Card, Col, Row } from "react-bootstrap"
 import "../../styles/issues/issuescontent.css"
-import { db } from '../../firebase'
+import { db, auth} from '../../firebase'
 import BootstrapTable from 'react-bootstrap-table-next'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default class IssuesContent extends React.Component {
     constructor(props) {
@@ -23,10 +23,11 @@ export default class IssuesContent extends React.Component {
     }
 
     getUserData = () => {
-        db.ref("issues").on("value", snapshot => {
+        const userID = auth.currentUser.uid
+        db.ref('users/'+ userID +'/issues').on("value", snapshot => {
             let issueslist = [];
             snapshot.forEach(snap => {
-                // snap.val() is the dictionary with all your keys/values from the 'issueslist' path
+                // snap.val() is the dictionary with all your keys/values from the 'issues' path
                 issueslist.push(snap.val());
             });
             this.setState({ issueslist: issueslist });
@@ -34,26 +35,40 @@ export default class IssuesContent extends React.Component {
     }
 
     render() {
-        const columns = [{
-            dataField: 'summary',
-            text: 'Summary'
-        }, {
-            dataField: 'priority',
-            text: 'Priority'
-        }, {
-            dataField: 'description',
-            text: 'Description'
-        }, {
-            dataField: 'project',
-            text: 'Project'
-        }];
-
-        const rowStyle = (row, rowIndex) => {
+        
+        const rowStyle = () => {
             return {
-                backgroundColor: 'white',
+                backgroundColor: '#f8f8f6',
                 fontSize: '14px'
             };
         };
+
+        const columns = [{
+            dataField: 'summary',
+            text: 'Summary',
+            headerStyle: { 
+                backgroundColor: '#c5cbe3',
+            }
+        }, {
+            dataField: 'priority',
+            text: 'Priority',
+            headerStyle: { 
+                backgroundColor: '#c5cbe3',
+            }
+        }, {
+            dataField: 'description',
+            text: 'Description',
+            headerStyle: { 
+                backgroundColor: '#c5cbe3',
+            }
+        }, {
+            dataField: 'project',
+            text: 'Project',
+            headerStyle: { 
+                backgroundColor: '#c5cbe3',
+            }
+        }];
+
 
         const rowEvents = {
             onClick: (e, row) => {
@@ -65,24 +80,21 @@ export default class IssuesContent extends React.Component {
         };
 
         return (
-            <Row class="wrapper">
-                <Col class="dbtable" xs={6}>
+            <Row className="wrapper">
+                <Col className="dbtable" xs={6}>
                     <BootstrapTable
                         keyField='id'
                         data={this.state.issueslist}
                         columns={columns}
                         rowStyle={rowStyle}
                         rowEvents={rowEvents}
-
-                    // bordered
-                    // striped
                     />
                 </Col>
                 <br />
                 <Col xs={6}>
-                    <Card class="currentissue">
-                        <Card.Header>Selected Issue</Card.Header>
-                        <Card.Body>
+                    <Card >
+                        <Card.Header style={{backgroundColor: '#c5cbe3', color: '#212529'}}>Selected Issue</Card.Header>
+                        <Card.Body style={{backgroundColor: '#f8f8f6'}}>
                             <Card.Title>Description</Card.Title>
                             <Card.Text>
                                 {this.state.currDescription}

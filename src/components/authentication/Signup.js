@@ -2,11 +2,13 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import { db, auth } from '../../firebase'
 
 export default function Signup() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
+  const nameRef = useRef()
   const { signup } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
@@ -27,6 +29,16 @@ export default function Signup() {
     } catch {
       setError("Failed to create an account")
     }
+
+    let user = auth.currentUser
+    let userID = user.uid
+    if (userID) {
+      console.log('pushing user data up')
+      db.ref('/users/' + userID).push({
+        email: user.email,
+      });
+    }
+
 
     setLoading(false)
   }

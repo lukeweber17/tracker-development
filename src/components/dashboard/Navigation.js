@@ -38,7 +38,7 @@ export default function BootstrapNavbar() {
                             </Nav>
                         </Switch>
                         <div class="cur-user">
-                            {/*<strong>Email: </strong><i>{currentUser.email}</i>*/}
+                            <strong style={{ fontSize: "20px"}}>Current user email: </strong><i style={{ color: 'grey'}}>{currentUser.email}</i>
                         </div>
 
                         <Button variant="link" onClick={handleLogout}>

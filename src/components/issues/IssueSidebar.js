@@ -3,9 +3,7 @@ import CreateIssue from "./CreateIssue"
 import DeleteIssue from "./DeleteIssue"
 import "../../styles/issues/issuesidebar.css"
 import { Link } from "react-router-dom"
-import { Modal, Button } from "react-bootstrap"
-import IssuesContent from './IssuesContent'
-
+import { Modal } from "react-bootstrap"
 
 export default function IssueSidebar() {
 
@@ -26,10 +24,8 @@ export default function IssueSidebar() {
             <Modal show={show2} onHide={handleClose2}>
                 <DeleteIssue />
             </Modal>
-            <ul class="list-group">
+            <ul className="list-group">
                 <li class="list-group-item"><Link onClick={handleShow}>Create Issue</Link></li>         
-            </ul>
-            <ul class="list-group">
                 <li class="list-group-item"><Link onClick={handleShow2}>Delete Issue</Link></li>         
             </ul>
         </div>

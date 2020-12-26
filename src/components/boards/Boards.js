@@ -6,7 +6,7 @@ function Boards() {
     return (
         <html>
         <body>
-            <div class="full-page">
+            <div className="full-page">
                 <Navigation />
             </div>
         </body>

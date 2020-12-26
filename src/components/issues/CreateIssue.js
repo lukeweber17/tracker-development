@@ -1,19 +1,15 @@
 import React, { useState, useRef } from 'react'
 import { ToggleButton, Button, Modal, Form, ButtonGroup } from 'react-bootstrap'
 import "../../styles/issues/createissue.css"
-import { db } from '../../firebase';
-
+import { useAuth } from "../../contexts/AuthContext"
+import { db, auth } from '../../firebase';
 
 export default function CreateIssue() {
 
-    const handleClose = () => setShow(false);
     const summaryRef = useRef()
-    const priorityRef = useRef()
     const descriptionRef = useRef()
     const projectRef = useRef()
-
-    const [checked, setChecked] = React.useState(false);
-    const [radioValue, setRadioValue] = React.useState("fire");
+    const [radioValue, setRadioValue] = React.useState("");
  
     const radios = [
         { name: "Fire", value: "fire" },
@@ -21,20 +17,15 @@ export default function CreateIssue() {
         { name: "Warm", value: "warm" }
     ];
 
-    const [show, setShow] = useState(false);
-    const [prior, setPrior] = useState();
+    const id = auth.currentUser.uid
 
     function handleSubmit() {
-        db.ref('/issues').push({
+        db.ref("users/"+id+"/issues").push({
             summary: summaryRef.current.value,
             priority: radioValue,
             description: descriptionRef.current.value,
             project: projectRef.current.value
         });
-    }
-
-    function handleChange(e) {
-        setPrior(e.target.value)
     }
 
     return (

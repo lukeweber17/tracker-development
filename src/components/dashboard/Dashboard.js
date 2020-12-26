@@ -3,8 +3,18 @@ import Navigation from "./Navigation"
 import "../../styles/dashboard/dashboard.css"
 import Sidebar from "./Sidebar"
 import { Row, Col, Container } from "react-bootstrap"
+import { db, auth } from "../../firebase"
 
 export default function Dashboard() {
+
+  // const user = auth.currentUser
+
+  // if (user != null) {
+  //   let uid = user.uid;
+  //   db.ref('/users/'+uid).push({
+  //      email: auth.currentUser.email
+  //   });
+  // }
 
   return (
     <html>
