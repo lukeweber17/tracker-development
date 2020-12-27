@@ -26,7 +26,7 @@ export default class IssuesContent extends React.Component {
 
     getUserData = () => {
         const userID = auth.currentUser.uid
-        db.ref('users/' + userID + '/issues').on("value", snapshot => {
+        db.ref('users/' + userID + '/boards/projects/issues').on("value", snapshot => {
             let issueslist = [];
             snapshot.forEach(snap => {
                 // snap.val() is the dictionary with all your keys/values from the 'issues' path
@@ -80,7 +80,7 @@ export default class IssuesContent extends React.Component {
         return (
             <Row className="wrapper">
                 <Col xs={6}>
-                    <Card className="issues-list">
+                    <Card style={{ backgroundColor: '#f8f8f6' }} className="issues-list">
                         <BootstrapTable
                             keyField='id'
                             data={this.state.issueslist}

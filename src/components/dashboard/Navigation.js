@@ -32,9 +32,9 @@ export default function BootstrapNavbar() {
                         <Switch>
                             <Nav className="mr-auto">
                                 <Nav.Link href="/">About</Nav.Link>
+                                <Nav.Link href="/boards">Boards</Nav.Link>
                                 <Nav.Link href="/projects">Projects</Nav.Link>
                                 <Nav.Link href="/issues">Issues</Nav.Link>
-                                <Nav.Link href="/boards">Boards</Nav.Link>
                             </Nav>
                         </Switch>
                         <div class="cur-user">

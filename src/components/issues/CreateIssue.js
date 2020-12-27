@@ -23,7 +23,7 @@ export default function CreateIssue() {
         const fullDate = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
         const dateValue = fullDate
 
-        db.ref("users/" + id + "/issues").push({
+        db.ref("users/" + id + "/boards/projects/issues").push({
             title: titleRef.current.value,
             priority: radioValue,
             description: descriptionRef.current.value,
@@ -48,6 +48,13 @@ export default function CreateIssue() {
 
                     <Row>
                         <Col xs={6}>
+                            {/* <Form.Group as={Col} controlId="formGridState">
+                                <Form.Label>State</Form.Label>
+                                <Form.Control as="select" defaultValue="Choose...">
+                                    <option>Choose...</option>
+                                    <option>...</option>
+                                </Form.Control>
+                            </Form.Group> */}
                             <Form.Group controlId="string">
                                 <Form.Label>Project</Form.Label>
                                 <Form.Control ref={projectRef} type="text" placeholder="Project" />

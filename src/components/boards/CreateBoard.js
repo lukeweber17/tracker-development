@@ -3,7 +3,7 @@ import { ToggleButton, Button, Modal, Form, ButtonGroup, Row, Col } from 'react-
 import "../../styles/issues/createissue.css"
 import { db, auth } from '../../firebase';
 
-export default function CreateProject() {
+export default function CreateBoard() {
 
     const titleRef = useRef()
     const boardRef = useRef()
