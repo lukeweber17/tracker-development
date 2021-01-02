@@ -5,19 +5,24 @@ import { db, auth } from '../../firebase';
 
 export default function CreateBoard() {
 
-    const titleRef = useRef()
     const boardRef = useRef()
-
     const id = auth.currentUser.uid
-   
+    const [proficiencyValue, setProficiencyValue] = React.useState("")
+    const radios = [
+        { name: "Expert", value: "expert" },
+        { name: "Advanced", value: "advanced" },
+        { name: "Intermediate", value: "intermediate" },
+        { name: "Novice", value: "novice" }
+    ];
+
     function handleSubmit() {
         const date = new Date()
         const fullDate = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
         const dateValue = fullDate
 
-        db.ref("users/" + id + "/boards/projects").push({
-            title: titleRef.current.value,
+        db.ref("users/" + id + "/boards").push({
             board: boardRef.current.value,
+            proficiency: proficiencyValue,
             date: dateValue
         });
     }
@@ -29,24 +34,26 @@ export default function CreateBoard() {
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={handleSubmit}>
-
                     <Form.Group controlId="string">
-                        <Form.Label>Title</Form.Label>
-                        <Form.Control ref={titleRef} type="text" placeholder="Title" />
+                        <Form.Label>Board Title</Form.Label>
+                        <Form.Control ref={boardRef} type="text" placeholder="Title" />
                     </Form.Group>
-
-
-                    <Row>
-                        <Col xs={6}>
-                            <Form.Group controlId="string">
-                                <Form.Label>Board</Form.Label>
-                                <Form.Control ref={boardRef} type="text" placeholder="Project" />
-                            </Form.Group>
-                        </Col>
-                    </Row>
-
-
-
+                    <Form.Label>Proficiency</Form.Label>
+                    <br />
+                    <ButtonGroup toggle className="mb-2">
+                        {radios.map((radio, index) => (
+                            <ToggleButton
+                                key={index}
+                                type="radio"
+                                name="radio"
+                                value={radio.value}
+                                checked={proficiencyValue === radio.value}
+                                onChange={e => setProficiencyValue(e.currentTarget.value)}
+                            >
+                                {radio.name}
+                            </ToggleButton>
+                        ))}
+                    </ButtonGroup>
                     <Modal.Footer>
                         <Button variant="primary" type="submit">
                             Create!

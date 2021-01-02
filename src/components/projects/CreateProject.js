@@ -15,7 +15,7 @@ export default function CreateProject() {
         const fullDate = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
         const dateValue = fullDate
 
-        db.ref("users/" + id + "/boards/projects").push({
+        db.ref("users/" + id + "/boards/" + boardRef.current.value + "projects").push({
             title: titleRef.current.value,
             board: boardRef.current.value,
             date: dateValue
@@ -29,13 +29,10 @@ export default function CreateProject() {
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={handleSubmit}>
-
                     <Form.Group controlId="string">
                         <Form.Label>Title</Form.Label>
                         <Form.Control ref={titleRef} type="text" placeholder="Title" />
                     </Form.Group>
-
-
                     <Row>
                         <Col xs={6}>
                             <Form.Group controlId="string">
@@ -44,9 +41,6 @@ export default function CreateProject() {
                             </Form.Group>
                         </Col>
                     </Row>
-
-
-
                     <Modal.Footer>
                         <Button variant="primary" type="submit">
                             Create!
