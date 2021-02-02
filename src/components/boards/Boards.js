@@ -7,6 +7,17 @@ import BoardSidebar from './BoardSidebar'
 import { Container, Col, Row } from 'react-bootstrap'
 
 export default function Boards() {
+
+    // const [userID, setUserID] = useState('')
+
+    // useEffect(() => {
+    //     fire.collection('users').get()
+    //     .then(snapshot => setUserID(snapshot.data()))
+    //     console.log(userID)
+    //     }
+      
+
+
     return (
         <html>
             <body>

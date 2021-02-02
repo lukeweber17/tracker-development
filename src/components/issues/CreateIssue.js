@@ -21,14 +21,15 @@ export default function CreateIssue() {
     function handleSubmit() {
         const date = new Date()
         const fullDate = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
-        const dateValue = fullDate
-
+        console.log(titleRef.current.value)
+        console.log(radioValue)
+        console.log(fullDate)
         db.ref("users/" + id + "/boards/projects/issues").push({
             title: titleRef.current.value,
             priority: radioValue,
             description: descriptionRef.current.value,
             project: projectRef.current.value,
-            date: dateValue
+            date: fullDate
         });
     }
 

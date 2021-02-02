@@ -1,12 +1,11 @@
 import React, { useState, useRef } from 'react'
 import { ToggleButton, Button, Modal, Form, ButtonGroup, Row, Col } from 'react-bootstrap'
 import "../../styles/issues/createissue.css"
-import { db, auth } from '../../firebase';
+import { db, fire, auth } from '../../firebase';
 
 export default function CreateBoard() {
 
     const boardRef = useRef()
-    const id = auth.currentUser.uid
     const [proficiencyValue, setProficiencyValue] = React.useState("")
     const radios = [
         { name: "Expert", value: "expert" },
@@ -16,19 +15,31 @@ export default function CreateBoard() {
     ];
 
     function handleSubmit() {
+        const user = auth.currentUser
+        const uid = user.uid
         const date = new Date()
         const fullDate = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
-        const dateValue = fullDate
+        console.log(boardRef.current.value)
+        console.log(proficiencyValue)
+        console.log(fullDate)
 
-        db.ref("users/" + id + "/boards").push({
+        
+
+        fire.collection('users').where('user', '==', uid).collection('dashboards').doc(boardRef.current.value).add({
             board: boardRef.current.value,
             proficiency: proficiencyValue,
-            date: dateValue
+            date: fullDate
         });
+
+        // db.ref("users/" + id + "/boards").push({
+        //     board: boardRef.current.value,
+        //     proficiency: proficiencyValue,
+        //     date: fullDate
+        // });
     }
 
     return (
-        <>
+        <div>
             <Modal.Header closeButton>
                 <Modal.Title>Create New Project</Modal.Title>
             </Modal.Header>
@@ -61,6 +72,6 @@ export default function CreateBoard() {
                     </Modal.Footer>
                 </Form>
             </Modal.Body>
-        </>
+        </div>
     );
 }

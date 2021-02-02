@@ -10,7 +10,7 @@ export default function Projects() {
     return (
         <html>
             <body>
-                <div class="full-page">
+                <div className="full-page">
                     <Navigation />
                     <Container fluid className="full-container">
                         <Row>
