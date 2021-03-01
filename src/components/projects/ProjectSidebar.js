@@ -17,7 +17,7 @@ export default function ProjectSidebar() {
     const handleShow2 = () => setShow2(true);
 
     return (
-        <div class="sidebar">
+        <div className="sidebar">
             <Modal show={show} onHide={handleClose}>
                 <CreateProject />
             </Modal>
@@ -25,8 +25,8 @@ export default function ProjectSidebar() {
                 <DeleteProject />
             </Modal>
             <ul className="list-group">
-                <li class="list-group-item"><Link onClick={handleShow}>Create Project</Link></li>         
-                <li class="list-group-item"><Link onClick={handleShow2}>Delete Project</Link></li>         
+                <li className="list-group-item"><Link onClick={handleShow}>Create Project</Link></li>         
+                <li className="list-group-item"><Link onClick={handleShow2}>Delete Project</Link></li>         
             </ul>
         </div>
     )

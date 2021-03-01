@@ -17,7 +17,7 @@ export default function IssueSidebar() {
     const handleShow2 = () => setShow2(true);
 
     return (
-        <div class="sidebar">
+        <div className="sidebar">
             <Modal show={show} onHide={handleClose}>
                 <CreateIssue />
             </Modal>
@@ -25,8 +25,8 @@ export default function IssueSidebar() {
                 <DeleteIssue />
             </Modal>
             <ul className="list-group">
-                <li class="list-group-item"><Link onClick={handleShow}>Create Issue</Link></li>         
-                <li class="list-group-item"><Link onClick={handleShow2}>Delete Issue</Link></li>         
+                <li className="list-group-item"><Link onClick={handleShow}>Create Issue</Link></li>         
+                <li className="list-group-item"><Link onClick={handleShow2}>Delete Issue</Link></li>         
             </ul>
         </div>
     )

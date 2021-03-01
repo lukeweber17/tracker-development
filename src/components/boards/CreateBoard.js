@@ -17,6 +17,8 @@ export default function CreateBoard() {
     function handleSubmit() {
         const user = auth.currentUser
         const uid = user.uid
+        const userRef = fire.doc(`users/${uid}`);
+
         const date = new Date()
         const fullDate = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
         console.log(boardRef.current.value)
@@ -25,7 +27,7 @@ export default function CreateBoard() {
 
         
 
-        fire.collection('users').where('user', '==', uid).collection('dashboards').doc(boardRef.current.value).add({
+        fire.collection('users').where('userRef', '==', uid).collection('dashboards').doc(boardRef.current.value).add({
             board: boardRef.current.value,
             proficiency: proficiencyValue,
             date: fullDate

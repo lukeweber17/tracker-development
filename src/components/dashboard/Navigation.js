@@ -23,7 +23,7 @@ export default function BootstrapNavbar() {
     }
 
     return (
-        <div class="navigation">
+        <div className="navigation">
             <BrowserRouter>
                 <Navbar className="color-nav" variant="dark" expand="sm" sticky="top">
                     <Navbar.Brand href="/">Tracker</Navbar.Brand>
@@ -37,7 +37,7 @@ export default function BootstrapNavbar() {
                                 <Nav.Link href="/issues">Issues</Nav.Link>
                             </Nav>
                         </Switch>
-                        <div class="cur-user">
+                        <div className="cur-user">
                             <strong style={{ fontSize: "20px"}}>Current user email: </strong><i style={{ color: 'grey'}}>{currentUser.email}</i>
                         </div>
 

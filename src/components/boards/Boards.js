@@ -21,7 +21,7 @@ export default function Boards() {
     return (
         <html>
             <body>
-                <div class="full-page">
+                <div className="full-page">
                     <Navigation />
                     <Container fluid className="full-container">
                         <Row>

@@ -25,8 +25,8 @@ export default function BoardSidebar() {
                 <DeleteBoard />
             </Modal>
             <ul className="list-group">
-                <li class="list-group-item"><Link onClick={handleShow}>Create Board</Link></li>         
-                <li class="list-group-item"><Link onClick={handleShow2}>Delete Board</Link></li>         
+                <li className="list-group-item"><Link onClick={handleShow}>Create Board</Link></li>         
+                <li className="list-group-item"><Link onClick={handleShow2}>Delete Board</Link></li>         
             </ul>
         </div>
     )

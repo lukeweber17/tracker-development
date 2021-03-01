@@ -3,16 +3,16 @@ import "../../styles/dashboard/sidebar.css"
 
 export default function Sidebar() {
     return (
-        <div class="sidebar">
+        <div className="sidebar">
            
-            <ul class="list-group">
-                <li class="list-group-item">Action 1</li>         
+            <ul className="list-group">
+                <li className="list-group-item">Action 1</li>         
             </ul>
-            <ul class="list-group">
-                <li class="list-group-item">Action 1</li>         
+            <ul className="list-group">
+                <li className="list-group-item">Action 1</li>         
             </ul>
-            <ul class="list-group">
-                <li class="list-group-item">Action 1</li>         
+            <ul className="list-group">
+                <li className="list-group-item">Action 1</li>         
             </ul>
            
         </div>

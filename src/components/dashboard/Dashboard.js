@@ -9,7 +9,7 @@ export default function Dashboard() {
   return (
     <html>
       <body>
-        <div class="full-page">
+        <div className="full-page">
           <Navigation />
           <Container fluid className="full-container">
             <Row>

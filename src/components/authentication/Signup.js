@@ -35,7 +35,7 @@ export default function Signup() {
     let user = auth.currentUser
     if (user) {
       console.log('pushing user data up')
-      fire.collection('users').add({
+      fire.collection('users').doc(user.email).add({
         email: user.email,
       });
 
@@ -52,7 +52,8 @@ export default function Signup() {
 
   return (
     <>
-      <Card>
+      <h1 style={{ textAlign: "center", marginBottom: "30px" }}>Tracker</h1>
+      <Card style={{ backgroundColor: '#4056a1' }}>
         <Card.Body>
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
